@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
+from django.db.models import Q
 
 from compromisso.forms import CompromissoForm
 from compromisso.models import Compromisso
+
 
 
 def hello_view(request):
@@ -9,8 +11,16 @@ def hello_view(request):
 
 
 def list_compromissos(request):
-    items = Compromisso.objects.all()
-    return render(request, 'lista.html', {'items': items})
+    dados = {}
+    query = request.GET.get('q')
+    if query:
+        dados['query'] = query
+        queryset = (Q(data__icontains=query))
+        items = Compromisso.objects.filter(queryset).distinct()
+    else:
+        items = Compromisso.objects.all()
+    dados['items'] = items
+    return render(request, 'lista.html', dados)
 
 
 def create_compromisso(request):
