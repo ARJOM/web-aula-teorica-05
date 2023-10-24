@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Tarefas</title>
+</head>
+<body>
+<form method="GET">
+    <input type="text" name="q" value="{{ query }}">
+    <button type="submit">Pesquisar</button>
+</form>
+<a href="{% url 'todo-create' %}">Novo Todo</a>
+{% for item in object_list %}
+    <div>
+        <p>{{ item.descricao }}</p>
+        <p>{{ item.prazo }}</p>
+        <a href="{% url 'todo-edit' item.id %}">Editar</a>
+    </div>
+{% endfor %}
+
+</body>
+</html>
