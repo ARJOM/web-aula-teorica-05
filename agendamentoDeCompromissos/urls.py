@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('compromisso.urls')),
     path('', include('todo.urls')),
+    path('spotif/', include('spotif.urls'))
 ]

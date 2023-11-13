@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}{{ item.nome }}{% endblock %}
+{% block content %}
+    <h1>{{ item.nome }}</h1>
+    <h2>{{ item.descricao }}</h2>
+    {% for musica in item.musicas.all %}
+        <p>{{ musica.titulo }} - {{ musica.duracao }}</p>
+    {% endfor %}
+{% endblock %}

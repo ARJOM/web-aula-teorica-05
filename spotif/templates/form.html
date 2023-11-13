@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+
+        {{ form }}
+
+        {#  Lista de Músicas  #}
+        {% for musica in musicas %}
+            <label for="{{ musica.id }}">{{ musica }}</label>
+            <input type="checkbox" id="{{ musica.id }}" name='{{ musica.titulo }}' value="{{ musica.id }}">
+        {% endfor %}
+        <br/>
+
+        <button type="submit">Enviar</button>
+    </form>
+{% endblock %}

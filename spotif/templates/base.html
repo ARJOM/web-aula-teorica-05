@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Página{% endblock %}</title>
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'style.css' %}">
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="/spotif">Home</a></li>
+            <li><a href="/spotif/create">Nova Playlist</a></li>
+        </ul>
+    </nav>
+</header>
+{% block content %}
+{% endblock %}
+</body>
+</html>
